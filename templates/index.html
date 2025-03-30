@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Database</title>
+    <style>
+        h1 {text-align: center;}
+        body { font-family: Arial; margin: 40px; }
+        h2 { margin-top: 40px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Library Database</h1>
+    <!-- loop over each table and its rows in the data dictionary using Jinja template engine -->
+    {% for table_name, rows in data.items() %}
+        <h2>{{ table_name }}</h2>
+        <!-- check if table has rows -->
+        {% if rows %}
+            <table>
+                <tr>
+                    <!-- render column headers -->
+                    {% for column in rows[0].keys() %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+                <!-- render each row -->
+                {% for row in rows %}
+                    <tr>
+                        {% for column in row.keys() %}
+                            <td>{{ row[column] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <!-- display this if there is no data in the table -->
+            <p><em>no data</em></p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
