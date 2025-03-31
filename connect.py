@@ -11,3 +11,9 @@ def connect_to_db():
         return conn
     else:
         print("Error opening database")
+    
+def disconnect_from_db(database):
+    if database:
+        database.commit()
+        database.close()
+        print("Closed database successfully")
