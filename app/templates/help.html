@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Ask for Help{% endblock %}
+
+{% block content %}
+
+<h2>Ask for Help</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.uid.label }} {{ form.uid() }}</p>
+    <p>{{ form.message.label }} {{ form.message() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% if results %}
+    <h3>Results:</h3>
+    <table>
+        <tr>
+            {% for col in results[0].keys() %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in results %}
+            <tr>
+                {% for col in row.keys() %}
+                    <td>{{ row[col] }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% endblock %}

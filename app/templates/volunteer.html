@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Volunteer{% endblock %}
+
+{% block content %}
+
+<h2>Volunteer</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.uid.label }} {{ form.uid() }}</p>
+    <p>{{ form.hours.label }} {{ form.hours() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

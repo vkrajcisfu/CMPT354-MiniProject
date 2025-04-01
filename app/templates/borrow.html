@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Borrow Item{% endblock %}
+
+{% block content %}
+
+<h2>Borrow an Item</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.uid.label }} {{ form.uid() }}</p>
+    <p>{{ form.iid.label }} {{ form.iid() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Find Item{% endblock %}
+
+{% block content %}
+
+<h2>Find an Item</h2>
+<h3>Search by the title of the item, or the type of the item</h3>
+<h3>Types we carry are: Book, CD, Magazine, Journal</h3>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.query.label }} {{ form.query() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% if results %}
+    <h3>Results:</h3>
+    <table>
+        <tr>
+            {% for col in results[0].keys() %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in results %}
+            <tr>
+                {% for col in row.keys() %}
+                    <td>{{ row[col] }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% endblock %}

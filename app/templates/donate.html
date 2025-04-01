@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Donate Item{% endblock %}
+
+{% block content %}
+
+<h2>Donate an Item</h2>
+<h3>Types we carry are: Book, CD, Magazine, Journal</h3>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.title.label }} {{ form.title() }}</p>
+    <p>{{ form.item_type.label }} {{ form.item_type() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

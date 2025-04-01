@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Register for Event{% endblock %}
+
+{% block content %}
+
+<h2>Register for an Event</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.uid.label }} {{ form.uid() }}</p>
+    <p>{{ form.eid.label }} {{ form.eid() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

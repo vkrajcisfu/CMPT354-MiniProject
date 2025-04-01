@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Library Database{% endblock %}</title>
+</head>
+<style>
+    h1 {text-align: center;}
+    body { font-family: Arial; margin: 40px; }
+    h2 { margin-top: 40px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    .success { color: green; }
+    .error {color: red; }
+</style>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/view-database">View Database</a> |
+        <a href="/find-item">Find Item</a> |
+        <a href="/borrow">Borrow</a> |
+        <a href="/return">Return</a> |
+        <a href="/donate">Donate</a> |
+        <a href="/find-event">Find Event</a> |
+        <a href="/register-event">Register for Event</a> |
+        <a href="/volunteer">Volunteer</a> |
+        <a href="/help">Help</a>
+    </nav>
+    <hr>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+            <li class="{{ 'success' if category == 'success' else 'error' }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>

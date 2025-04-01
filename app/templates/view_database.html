@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Library Database{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Library Database</h1>
+
+<!-- loop over each table and its rows in the data dictionary using Jinja template engine -->
+{% for table_name, rows in data.items() %}
+    <h2>{{ table_name }}</h2>
+    <!-- check if table has rows -->
+    {% if rows %}
+        <table>
+            <tr>
+                <!-- render column headers -->
+                {% for column in rows[0].keys() %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+            <!-- render each row -->
+            {% for row in rows %}
+                <tr>
+                    {% for column in row.keys() %}
+                        <td>{{ row[column] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <!-- display this if there is no data in the table -->
+        <p><em>no data</em></p>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

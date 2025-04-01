@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Find Item{% endblock %}
+
+{% block content %}
+
+<h2>Find an Event</h2>
+<h3>Search by the title, type, or audience of event</h3>
+<h3>Types include: Educational, Recreational, Support</h3>
+<h3>Audiences include: General, Adult, Youth</h3>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.query.label }} {{ form.query() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% if results %}
+    <h3>Results:</h3>
+    <table>
+        <tr>
+            {% for col in results[0].keys() %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in results %}
+            <tr>
+                {% for col in row.keys() %}
+                    <td>{{ row[col] }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% endblock %}
