@@ -1,6 +1,5 @@
 from initialize import *
 from app import app
-import os.path
 
 if __name__ == "__main__":
     

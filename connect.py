@@ -4,6 +4,7 @@ database = "library.db"
 
 def connect_to_db():
     conn = sqlite3.connect(database)
+    conn.row_factory = sqlite3.Row
     
     print(f"Opened SQLite database with version {sqlite3.sqlite_version} successfully.")
     
